@@ -8,7 +8,9 @@ import javax.swing.JTable;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -18,6 +20,8 @@ import java.util.Date;
 import java.util.regex.Pattern;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
@@ -32,6 +36,7 @@ public class MakeBill extends JFrame {
 	private String servlines = "";
 	private double RoomFee;
 	private double servtotal;
+	private Customer cust;
 
 	public MakeBill() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -75,7 +80,7 @@ public class MakeBill extends JFrame {
 						String ldate = pieces[6];
 						int totaldays = Integer.parseInt(pieces[7]);
 
-						Customer cust = new Customer(username, name, surname, phone, email, edate, ldate, totaldays);
+						cust = new Customer(username, name, surname, phone, email, edate, ldate, totaldays);
 						CustList.add(cust);
 
 					}
@@ -120,7 +125,7 @@ public class MakeBill extends JFrame {
 				dispose();
 			}
 		});
-		button_1.setBounds(10, 496, 444, 23);
+		button_1.setBounds(237, 496, 217, 23);
 		getContentPane().add(button_1);
 
 		JButton btnViewSelectedCustomers = new JButton("View Selected Customers Bill");
@@ -192,6 +197,41 @@ public class MakeBill extends JFrame {
 		lblNewLabel.setIcon(new ImageIcon("images\\hotel.jpg"));
 		lblNewLabel.setBounds(0, 0, 462, 544);
 		getContentPane().add(lblNewLabel);
+
+		JButton btnSaveBill = new JButton("Save Bill");
+		btnSaveBill.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+
+				String filename = cust.getName() + cust.getSurname() + "bill.txt";
+				File f = new File(filename);
+
+				try {
+					FileWriter bfw = new FileWriter(filename, false);
+					bfw.write("\t Billing Information\n " + System.lineSeparator() + "\t\t\tDate:" + formattedDate
+							+ System.lineSeparator() + "\n==========================================\t"
+							+ System.lineSeparator() + "\n Name:" + cust.getName() + "\tSurname: " + cust.getSurname()
+							+ System.lineSeparator() + "\n_________________________________________________"
+							+ System.lineSeparator() + "\n__________________Room Details______________________"
+							+ System.lineSeparator() + "\nEntering Date:" + cust.getEDate() + "\t Leaving Date:"
+							+ cust.getLDate() + System.lineSeparator() + "\nTotal Days:" + cust.getTDays() + "\t"
+							+ cust.getRoomtype() + "\t\t\t" + RoomFee + System.lineSeparator()
+							+ "\n__________________Service Details______________________" + System.lineSeparator()
+							+ "\nDescription\tUnits\tU.Price\tTotal\n" + servlines + System.lineSeparator()
+							+ "\n_________________________________________________" + System.lineSeparator()
+							+ "\n TOTAL to be paid:\t\t\t" + (servtotal + RoomFee));
+					bfw.close();
+					JOptionPane.showMessageDialog(null, " Saved successfully");
+
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
+			}
+		});
+		btnSaveBill.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnSaveBill.setBounds(21, 496, 206, 23);
+		getContentPane().add(btnSaveBill);
 	}
 
 	public static void getCurrentTimeUsingCalendar() {
