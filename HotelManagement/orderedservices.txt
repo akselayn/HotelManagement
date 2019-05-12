@@ -1,0 +1,5 @@
+sema:duman:Laundry:1:12.0:false:
+aynur:akyol:Room Cleaning:1:10.0:false:
+aynur:akyol:Laundry:1:12.0:false:
+aynur:akyol:Airport Transport:1:25.0:false:
+hale:kor:Laundry:1:12.0:false:

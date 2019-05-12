@@ -1,0 +1,7 @@
+hale:kor:Airport Transport:1:25.0:true:
+sema:duman:Room Cleaning:1:10.0:true:
+aynur:akyol:Room Cleaning:1:10.0:true:
+aynur:akyol:Airport Transport:1:25.0:true:
+aynur:akyol:Airport Transport:1:25.0:true:
+aynur:akyol:Lemon Cheesecake:1:10.0:true:
+aynur:akyol:Coffee:1:15.0:true:

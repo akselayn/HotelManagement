@@ -1,0 +1,7 @@
+nada:129090:admin:
+nada:90909:admin:
+aynur:123456:admin:
+akyola:123456:user:
+aliye:123456:staff:
+halek:11111:user:
+sema:654321:user:

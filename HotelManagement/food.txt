@@ -1,0 +1,6 @@
+aynur:akyol:Fries:1:10.0:false:
+aynur:akyol:Hamburger:1:10.0:false:
+aynur:akyolFries:1.010.0:
+aynur:akyolGreen Salad:1.012.0:
+aynur:akyolBerry Cheesecake:1.010.0:
+aynur:akyolCola:1.05.0:
