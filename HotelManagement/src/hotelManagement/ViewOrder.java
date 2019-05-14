@@ -24,6 +24,8 @@ public class ViewOrder extends JFrame {
 	public ViewOrder() {
 
 		getContentPane().setLayout(null);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 680, 430);
 
 		JLabel lblNewLabel = new JLabel("View Orders");
 		lblNewLabel.setForeground(Color.WHITE);
@@ -32,21 +34,22 @@ public class ViewOrder extends JFrame {
 		lblNewLabel.setBounds(185, 11, 239, 44);
 		getContentPane().add(lblNewLabel);
 
-		JButton btnNewButton = new JButton("Back To Menu");
+		JButton btnNewButton = new JButton("Back To Menu"); // When back to menu is clicked current frame is disposed.
 		btnNewButton.setFont(new Font("Dialog", Font.PLAIN, 13));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 			}
 		});
-		btnNewButton.setBounds(274, 261, 150, 35);
+		btnNewButton.setBounds(462, 277, 150, 35);
 		getContentPane().add(btnNewButton);
 
 		JButton btnNewButton_1 = new JButton("Finish Order");
 		btnNewButton_1.setFont(new Font("Dialog", Font.PLAIN, 13));
 		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				row = table.getSelectedRow();
+			public void actionPerformed(ActionEvent arg0) { // When finish order button is clicked selected service in
+															// table
+				row = table.getSelectedRow(); // is deleted from orderedservices file and carriedservice file
 				ArrayList<Service> servList = new ArrayList<Service>();
 				BufferedReader br1;
 				try {
@@ -105,14 +108,15 @@ public class ViewOrder extends JFrame {
 			}
 
 		});
-		btnNewButton_1.setBounds(37, 261, 150, 35);
+		btnNewButton_1.setBounds(37, 277, 150, 35);
 		getContentPane().add(btnNewButton_1);
 
 		JButton btnViewOrders = new JButton("View Orders");
 		btnViewOrders.setFont(new Font("Dialog", Font.PLAIN, 13));
 		btnViewOrders.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				DefaultTableModel table1 = new DefaultTableModel();
+			public void actionPerformed(ActionEvent arg0) { // When view order button is clicked ordered services are
+															// read
+				DefaultTableModel table1 = new DefaultTableModel(); // from file and listed in table.
 				table1.addColumn("C.Name");
 				table1.addColumn("Surname");
 				table1.addColumn("Service");
@@ -152,14 +156,14 @@ public class ViewOrder extends JFrame {
 		getContentPane().add(btnViewOrders);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(27, 100, 397, 150);
+		scrollPane.setBounds(27, 100, 608, 166);
 		getContentPane().add(scrollPane);
 		table = new JTable();
 		scrollPane.setViewportView(table);
 
 		JLabel lblNewLabel_1 = new JLabel("New label");
 		lblNewLabel_1.setIcon(new ImageIcon("images\\hotel.jpg"));
-		lblNewLabel_1.setBounds(0, 0, 451, 322);
+		lblNewLabel_1.setBounds(0, 0, 664, 391);
 		getContentPane().add(lblNewLabel_1);
 
 	}
